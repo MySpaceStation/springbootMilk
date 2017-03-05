@@ -1,0 +1,43 @@
+spring:
+    thymeleaf:
+        cache: false
+    devtools:
+        restart:
+            additional-paths: src/main/java
+    datasource:
+        url: jdbc:mysql://127.0.0.1:3306/mybatis-plus?characterEncoding=utf8
+        username: root
+        password: admin
+        driver-class-name: com.mysql.jdbc.Driver
+        type: com.zaxxer.hikari.HikariDataSource
+        hikari:
+            cachePrepStmts: true
+            prepStmtCacheSize: 250
+            prepStmtCacheSqlLimit: 2048
+    redis:
+        host:
+        port: 6379
+        password:
+        pool:
+            max-active: 8
+            max-idle: 8
+            max-wait: -1
+            min-idle: 0
+        timeout: 0
+
+# mybatis_config
+mybatis:
+    mapperLocations: classpath:mapping/*.xml
+    typeAliasesPackage: com.hc.system.admin.entity
+
+# log_config
+logging:
+    level:
+        root: WARN
+        com.hc.mapper: DEBUG
+#logging.level.org.springframework.web=ERROR
+
+#server配置
+server:
+    port: 900
+
