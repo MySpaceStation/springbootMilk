@@ -1,11 +1,11 @@
 package com.hc.system.admin.controller;
 
 import com.baomidou.mybatisplus.plugins.Page;
+import com.hc.core.base.BaseControllerCrud;
 import com.hc.system.admin.entity.User;
 import com.hc.system.admin.service.IUserService;
-import org.springframework.ui.Model;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
@@ -14,9 +14,9 @@ import javax.annotation.Resource;
  * <p>
  * /mybatis-plus/src/test/java/com/baomidou/mybatisplus/test/generator/MysqlGenerator.java
  */
-@RestController
+@Controller
 @RequestMapping("/user")
-public class UserController {
+public class UserController extends BaseControllerCrud<Long ,User>{
 
     @Resource
     private IUserService userService;
