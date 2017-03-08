@@ -10,21 +10,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author milk.huchan
  * @version 1.0
  * @createTime 2016/10/27 23:42
- * @ChangeLog
+ * @ChangeLog 优化代码结构
  */
 public abstract class BaseController<T> implements InitializingBean {
-	protected final Class<T> entityClass = ReflectKit.findParameterizedType(this.getClass(), 0);
+	private final Class<T> entityClass = ReflectKit.findParameterizedType(this.getClass(), 0);
 	private String viewPrefix;
 
-	protected BaseController() {
+	BaseController() {
 		this.setViewPrefix(this.defaultViewPrefix());
 	}
 
 	public void afterPropertiesSet() throws Exception {
-		if(this.entityClass != null) {
-
-		}
 	}
+
 	protected void setDefaultData(T t){
 		
 	}
@@ -37,11 +35,11 @@ public abstract class BaseController<T> implements InitializingBean {
 
 	}
 
-	public String getViewPrefix() {
+	private String getViewPrefix() {
 		return this.viewPrefix;
 	}
 
-	public void setViewPrefix(String viewPrefix) {
+	private void setViewPrefix(String viewPrefix) {
 		if(viewPrefix.startsWith("/")) {
 			viewPrefix = viewPrefix.substring(1);
 		}
@@ -49,7 +47,7 @@ public abstract class BaseController<T> implements InitializingBean {
 		this.viewPrefix = viewPrefix;
 	}
 
-	public String viewName(String suffixName) {
+	String viewName(String suffixName) {
 		if(!suffixName.startsWith("/")) {
 			suffixName = "/" + suffixName;
 		}
@@ -59,9 +57,9 @@ public abstract class BaseController<T> implements InitializingBean {
 
 	/**
 	 * 获取当前的第一个注解值
-	 * @return
+	 * @return currentViewPrefix
 	 */
-	protected String defaultViewPrefix() {
+	private String defaultViewPrefix() {
 		String currentViewPrefix = "";
 		RequestMapping requestMapping =  AnnotationUtils.findAnnotation(this.getClass(), RequestMapping.class); //获取RequestMapping注解
 		if(requestMapping != null && requestMapping.value().length > 0) {

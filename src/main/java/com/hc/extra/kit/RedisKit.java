@@ -16,26 +16,19 @@ public class RedisKit {
 
     private JedisPool jedisPool = new JedisPool();
 
-    public void set(String key, String value) throws Exception {
-        Jedis jedis = null;
-        try {
-            jedis = jedisPool.getResource();
+    void set(String key, String value) throws Exception {
+        try (Jedis jedis = jedisPool.getResource()) {
             jedis.set(key, value);
-        } finally {
-            //返还到连接池
-            jedis.close();
         }
+        //返还到连接池
     }
 
-    public String get(String key) throws Exception  {
+    String get(String key) throws Exception  {
 
-        Jedis jedis = null;
-        try {
-            jedis = jedisPool.getResource();
+        try (Jedis jedis = jedisPool.getResource()) {
             return jedis.get(key);
-        } finally {
-            //返还到连接池
-            jedis.close();
         }
+        //返还到连接池
+
     }
 }

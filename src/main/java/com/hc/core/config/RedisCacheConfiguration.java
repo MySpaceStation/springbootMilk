@@ -93,7 +93,7 @@ public class RedisCacheConfiguration extends CachingConfigurerSupport {
     }
 
     private void setSerializer(StringRedisTemplate template) {
-        Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
+        Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<>(Object.class);
         ObjectMapper om = new ObjectMapper();
         om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
         om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
@@ -105,7 +105,8 @@ public class RedisCacheConfiguration extends CachingConfigurerSupport {
      * If you are using @EnableRedisHttpSession the SessionMessageListener and enabling the necessary Redis Keyspace events is done automatically.
      * However, in a secured Redis enviornment the config command is disabled. This means that Spring Session cannot configure Redis Keyspace events for you.
      * To disable the automatic configuration add ConfigureRedisAction.NO_OP as a bean.
-     * @return
+     *
+     * @return NO_OP
      */
     @Bean
     public static ConfigureRedisAction configureRedisAction() {

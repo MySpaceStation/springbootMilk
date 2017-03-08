@@ -3,7 +3,7 @@ package com.hc.core.model;
 import java.util.Map;
 
 /**
- * Created by milk.huchan on 2017/3/6.
+ * Created by milk.huchan on 2017/3/6. DTO
  */
 public class StatusModel {
     /**

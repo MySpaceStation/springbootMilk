@@ -39,5 +39,4 @@ logging:
 
 #server配置
 server:
-    port: 900
-
+    port: 520
