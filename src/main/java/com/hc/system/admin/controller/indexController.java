@@ -18,4 +18,9 @@ import javax.annotation.Resource;
 public class indexController extends BaseControllerCrud<Long, User>{
     @Resource
     private IUserService userService;
+
+    @RequestMapping("/ws")
+    public String wsPage(){
+        return "/ws/index";
+    }
 }

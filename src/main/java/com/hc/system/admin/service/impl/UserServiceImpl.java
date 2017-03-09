@@ -1,5 +1,6 @@
 package com.hc.system.admin.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.hc.mapper.UserMapper;
@@ -16,7 +17,7 @@ import java.util.List;
  * User 表数据服务层接口实现类
  *
  */
-@Service
+@Service("userService")
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
 
 	@Override

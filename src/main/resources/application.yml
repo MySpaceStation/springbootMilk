@@ -24,6 +24,8 @@ spring:
             max-wait: -1
             min-idle: 0
         timeout: 0
+    jersey:
+      application-path: /api
 
 # mybatis_config
 mybatis:
@@ -40,3 +42,5 @@ logging:
 #server配置
 server:
     port: 520
+    servlet-path: /
+
