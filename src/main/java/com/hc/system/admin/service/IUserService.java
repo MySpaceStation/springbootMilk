@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.service.IService;
 import com.hc.system.admin.entity.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.stereotype.Component;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

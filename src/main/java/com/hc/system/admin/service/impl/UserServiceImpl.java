@@ -1,13 +1,10 @@
 package com.hc.system.admin.service.impl;
 
-import com.alibaba.fastjson.JSON;
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.hc.mapper.UserMapper;
 import com.hc.system.admin.entity.User;
 import com.hc.system.admin.service.IUserService;
 import jersey.repackaged.com.google.common.collect.Lists;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
