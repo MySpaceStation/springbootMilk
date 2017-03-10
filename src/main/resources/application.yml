@@ -26,7 +26,9 @@ spring:
         timeout: 0
     jersey:
       application-path: /api
-
+    data:
+      solr:
+        host: http://127.0.0.1:8983/solr/demo
 # mybatis_config
 mybatis:
     mapperLocations: classpath:mapping/*.xml
@@ -43,4 +45,3 @@ logging:
 server:
     port: 520
     servlet-path: /
-
