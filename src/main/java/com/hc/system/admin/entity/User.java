@@ -3,7 +3,11 @@ package com.hc.system.admin.entity;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
+import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
@@ -21,9 +25,11 @@ public class User extends Model<User> {
 	private Long id;
 
 	/** 名称 */
+	@NotEmpty(message="姓名不能为空")
 	private String name;
 
 	/** 年龄 */
+	@Min(18)
 	private Integer age;
 
 	/** 测试下划线字段命名类型 */

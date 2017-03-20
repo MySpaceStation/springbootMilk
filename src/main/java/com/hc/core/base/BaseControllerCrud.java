@@ -22,23 +22,23 @@ public class BaseControllerCrud<K extends Serializable, T> extends BaseControlle
     protected BaseControllerCrud() {
     }
 
-    @RequestMapping(value = "index", method = RequestMethod.GET)
+    @GetMapping("index")
     public String indexPage(){
         return viewName("index");
     }
 
-    @RequestMapping(value = "insert", method = RequestMethod.GET)
+    @GetMapping("insert")
     public String insertPage(){
         return viewName("insert");
     }
 
-    @RequestMapping(value = "list", method = RequestMethod.POST)
+    @PostMapping("list")
     @ResponseBody
     public Page<T> list(){
         return baseService.selectPage(new Page<>(), new EntityWrapper<>());
     }
 
-    @RequestMapping(value = "insert", method = RequestMethod.POST)
+    @PostMapping("insert")
     @ResponseBody
     public StatusModel insert(@RequestBody T t){
         boolean flag = false;
@@ -50,7 +50,7 @@ public class BaseControllerCrud<K extends Serializable, T> extends BaseControlle
         return flag ? new StatusModel(true,"保存成功") : new StatusModel(false,"保存失败");
     }
 
-    @RequestMapping(value = "insertBatch", method = RequestMethod.POST)
+    @PostMapping("insertBatch")
     @ResponseBody
     public StatusModel insertBatch(@RequestBody List<T> list){
         boolean flag = false;
@@ -62,7 +62,7 @@ public class BaseControllerCrud<K extends Serializable, T> extends BaseControlle
         return flag ? new StatusModel(true,"批量保存成功") : new StatusModel(false,"批量保存失败");
     }
 
-    @RequestMapping(value = "{id}/deleteById", method = RequestMethod.POST)
+    @PostMapping("{id}/deleteById")
     @ResponseBody
     public StatusModel deleteById(@PathVariable("id")K id){
         boolean flag = false;
@@ -74,7 +74,7 @@ public class BaseControllerCrud<K extends Serializable, T> extends BaseControlle
         return flag ? new StatusModel(true,"删除成功") : new StatusModel(false,"删除失败");
     }
 
-    @RequestMapping(value = "deleteBatchIds", method = RequestMethod.POST)
+    @PostMapping("deleteBatchIds")
     @ResponseBody
     public StatusModel deleteBatchIds(@RequestParam List<K> ids) {
         boolean flag = false;
@@ -86,7 +86,7 @@ public class BaseControllerCrud<K extends Serializable, T> extends BaseControlle
         return flag ? new StatusModel(true, "批量删除成功") : new StatusModel(false, "批量删除失败");
     }
 
-    @RequestMapping(value = "updateById", method = RequestMethod.POST)
+    @PostMapping("updateById")
     @ResponseBody
     public StatusModel updateById(@RequestBody T t){
         boolean flag = false;
@@ -98,7 +98,7 @@ public class BaseControllerCrud<K extends Serializable, T> extends BaseControlle
         return flag ? new StatusModel(true, "修改成功") : new StatusModel(false, "修改失败");
     }
 
-    @RequestMapping(value = "updateBatchById", method = RequestMethod.POST)
+    @PostMapping("updateBatchById")
     @ResponseBody
     public StatusModel updateBatchById(@RequestBody List<T> list){
         boolean flag = false;

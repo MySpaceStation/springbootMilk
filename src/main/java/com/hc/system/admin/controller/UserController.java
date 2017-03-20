@@ -5,6 +5,7 @@ import com.hc.core.base.BaseControllerCrud;
 import com.hc.system.admin.entity.User;
 import com.hc.system.admin.service.IUserService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
@@ -24,7 +25,7 @@ public class UserController extends BaseControllerCrud<Long ,User>{
     /**
      * AR 部分测试
      */
-    @RequestMapping("/test")
+    @GetMapping("/test")
     public Page<User> test() {
         User user = new User("testAr", 0, 1);
         System.err.println("删除所有：" + user.delete(null));
@@ -38,7 +39,7 @@ public class UserController extends BaseControllerCrud<Long ,User>{
     /**
      * 增删改查 CRUD
      */
-    @RequestMapping("/test1")
+    @GetMapping("/test1")
     public User test1() {
         System.err.println("删除一条数据：" + userService.deleteById(1L));
         System.err.println("deleteAll：" + userService.deleteAll());
@@ -56,7 +57,7 @@ public class UserController extends BaseControllerCrud<Long ,User>{
     /**
      * 插入 OR 修改
      */
-    @RequestMapping("/test2")
+    @GetMapping("/test2")
     public User test2() {
         userService.insertOrUpdate(new User(1L, "王五2", 19, 3));
         return userService.selectById(1L);
@@ -65,7 +66,7 @@ public class UserController extends BaseControllerCrud<Long ,User>{
     /**
      * 分页 PAGE
      */
-    @RequestMapping("/test3")
+    @GetMapping("/test3")
     public Page<User> test3() {
         return userService.selectPage(new Page<User>(0, 12));
     }

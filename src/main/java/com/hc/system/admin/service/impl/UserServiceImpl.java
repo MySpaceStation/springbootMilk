@@ -5,6 +5,7 @@ import com.hc.mapper.UserMapper;
 import com.hc.system.admin.entity.User;
 import com.hc.system.admin.service.IUserService;
 import jersey.repackaged.com.google.common.collect.Lists;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.List;
  *
  */
 @Service("userService")
+@Component
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
 
 	@Override

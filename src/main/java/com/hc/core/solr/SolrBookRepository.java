@@ -11,13 +11,5 @@ import java.util.List;
 public interface SolrBookRepository extends SolrCrudRepository<BookVO, String> {
 
     List<BookVO> findByName(String name);
-
-//    Page<User> findByNameOrDescription(@Boost(2) String name, String description, Pageable page);
-//
-//    @Highlight
-//    HighlightPage<User> findByNameIn(Collection<String> name, Page page);
-//
-//    @Query(value = "name:?0")
-//    @Facet(fields = { "cat" }, limit=20)
-//    FacetPage<User> findByNameAndFacetOnCategory(String name, Pageable page);
+    
 }

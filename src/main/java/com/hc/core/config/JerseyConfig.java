@@ -1,6 +1,6 @@
 package com.hc.core.config;
 
-import com.hc.system.admin.service.IUserService;
+import com.hc.system.admin.service.impl.UserServiceImpl;
 import io.swagger.jaxrs.config.BeanConfig;
 import io.swagger.jaxrs.listing.ApiListingResource;
 import io.swagger.jaxrs.listing.SwaggerSerializers;
@@ -30,7 +30,7 @@ public class JerseyConfig extends ResourceConfig {
     }
 
     private void registerEndpoints() {
-        register(IUserService.class);
+        register(UserServiceImpl.class);
     }
 
     private void configureSwagger() {

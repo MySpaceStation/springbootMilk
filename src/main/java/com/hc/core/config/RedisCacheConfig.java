@@ -23,12 +23,14 @@ import redis.clients.jedis.JedisPoolConfig;
 /**
  * <p/>
  * redis缓存配置<br>
- *
+ * (1) 速度快，因为数据存在内存中，类似于HashMap，HashMap的优势就是查找和操作的时间复杂度都是O(1)
+ * (2) 支持丰富数据类型，支持string，list，set，sorted set，hash
+ * (3) 支持事务，操作都是原子性，所谓的原子性就是对数据的更改要么全部执行，要么全部不执行
+ * (4) 丰富的特性：可用于缓存，消息，按key设置过期时间，过期后将会自动删除
  */
 @Configuration
-@PropertySource(value = "classpath:/application.yml")
 @EnableCaching
-public class RedisCacheConfiguration extends CachingConfigurerSupport {
+public class RedisCacheConfig extends CachingConfigurerSupport {
     @Value("${spring.redis.host}")
     private String host;
 
@@ -65,7 +67,7 @@ public class RedisCacheConfiguration extends CachingConfigurerSupport {
         JedisConnectionFactory factory = new JedisConnectionFactory();
         JedisPoolConfig poolConfig = new JedisPoolConfig();
         System.err.println("JedisPool注入成功！！");
-        System.err.println("redis地址：" + host + ":" + port);
+        System.err.println("redis地址:" + host + ":" + port);
         factory.setHostName(host);
         factory.setPort(port);
         factory.setPassword(password);

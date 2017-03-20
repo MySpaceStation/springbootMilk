@@ -47,7 +47,7 @@ public abstract class BaseController<T> implements InitializingBean {
 		this.viewPrefix = viewPrefix;
 	}
 
-	String viewName(String suffixName) {
+	public String viewName(String suffixName) {
 		if(!suffixName.startsWith("/")) {
 			suffixName = "/" + suffixName;
 		}
