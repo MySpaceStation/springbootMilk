@@ -5,9 +5,9 @@ spring:
         restart:
             additional-paths: src/main/java
     datasource:
-        url: jdbc:mysql://127.0.0.1:3306/mybatis-plus?characterEncoding=utf8
+        url: jdbc:mysql://127.0.0.1:3306/milk?characterEncoding=utf8
         username: root
-        password: admin
+        password: 888888
         driver-class-name: com.mysql.jdbc.Driver
         type: com.zaxxer.hikari.HikariDataSource
         hikari:

@@ -45,9 +45,9 @@ public class UserController extends BaseControllerCrud<Long ,User>{
         System.err.println("deleteAll：" + userService.deleteAll());
         System.err.println("插入一条数据：" + userService.insert(new User(1L, "张三", 17, 1)));
         User user = new User("张三", 17, 1);
-        boolean result = userService.insert(user);
-        // 自动回写的ID
-        Long id = user.getId();
+//        boolean result = userService.insert(user);
+//        // 自动回写的ID
+//        Long id = user.getId();
 //		System.err.println("插入一条数据：" + result + ", 插入信息：" + user.toString());
 //		System.err.println("查询：" + userService.selectById(id).toString());
 //		System.err.println("更新一条数据：" + userService.updateById(new User(1L, "三毛", 18, 2)));

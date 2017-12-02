@@ -13,63 +13,64 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @ChangeLog 优化代码结构
  */
 public abstract class BaseController<T> implements InitializingBean {
-	private final Class<T> entityClass = ReflectKit.findParameterizedType(this.getClass(), 0);
-	private String viewPrefix;
+    private final Class<T> entityClass = ReflectKit.findParameterizedType(this.getClass(), 0);
+    private String viewPrefix;
 
-	BaseController() {
-		this.setViewPrefix(this.defaultViewPrefix());
-	}
+    BaseController() {
+        this.setViewPrefix(this.defaultViewPrefix());
+    }
 
-	public void afterPropertiesSet() throws Exception {
-	}
+    public void afterPropertiesSet() throws Exception {
+    }
 
-	protected void setDefaultData(T t){
-		
-	}
+    protected void setDefaultData(T t) {
 
-	protected void setCommonData(T t){
+    }
 
-	}
+    protected void setCommonData(T t) {
 
-	protected void updateCommonData(T t){
+    }
 
-	}
+    protected void updateCommonData(T t) {
 
-	private String getViewPrefix() {
-		return this.viewPrefix;
-	}
+    }
 
-	private void setViewPrefix(String viewPrefix) {
-		if(viewPrefix.startsWith("/")) {
-			viewPrefix = viewPrefix.substring(1);
-		}
+    private String getViewPrefix() {
+        return this.viewPrefix;
+    }
 
-		this.viewPrefix = viewPrefix;
-	}
+    private void setViewPrefix(String viewPrefix) {
+        if (viewPrefix.startsWith("/")) {
+            viewPrefix = viewPrefix.substring(1);
+        }
 
-	public String viewName(String suffixName) {
-		if(!suffixName.startsWith("/")) {
-			suffixName = "/" + suffixName;
-		}
+        this.viewPrefix = viewPrefix;
+    }
 
-		return this.getViewPrefix() + suffixName;
-	}
+    public String viewName(String suffixName) {
+        if (!suffixName.startsWith("/")) {
+            suffixName = "/" + suffixName;
+        }
 
-	/**
-	 * 获取当前的第一个注解值
-	 * @return currentViewPrefix
-	 */
-	private String defaultViewPrefix() {
-		String currentViewPrefix = "";
-		RequestMapping requestMapping =  AnnotationUtils.findAnnotation(this.getClass(), RequestMapping.class); //获取RequestMapping注解
-		if(requestMapping != null && requestMapping.value().length > 0) {
-			currentViewPrefix = requestMapping.value()[0];//获取当前第一个注解的value值
-		}
+        return this.getViewPrefix() + suffixName;
+    }
 
-		if(StringUtils.isEmpty(currentViewPrefix)) {
-			currentViewPrefix = this.entityClass.getSimpleName();
-		}
+    /**
+     * 获取当前的第一个注解值
+     *
+     * @return currentViewPrefix
+     */
+    private String defaultViewPrefix() {
+        String currentViewPrefix = "";
+        RequestMapping requestMapping = AnnotationUtils.findAnnotation(this.getClass(), RequestMapping.class); //获取RequestMapping注解
+        if (requestMapping != null && requestMapping.value().length > 0) {
+            currentViewPrefix = requestMapping.value()[0]; //获取当前第一个注解的value值
+        }
 
-		return currentViewPrefix;
-	}
+        if (StringUtils.isEmpty(currentViewPrefix)) {
+            currentViewPrefix = this.entityClass.getSimpleName();
+        }
+
+        return currentViewPrefix;
+    }
 }
